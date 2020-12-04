@@ -1,0 +1,52 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loging &nbsp;&nbsp;&nbsp; 🐉</title>
+    <!--    在网页标题左侧显示图标-->
+    <link rel="icon" href="/static/css/images/favicon.ico" type="image/x-icon">
+    <!--    //在收藏夹显示图标-->
+	<!--    <link rel="shortcut icon" href="/static/css/images/favicon.ico" type="image/x-icon">-->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{%static 'css/log.css' %}">
+    <link rel="stylesheet" href="{%static 'css/semantic.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+</head>
+<body class="login">
+    <div class="ui center aligned grid" style="margin-top: 200px">
+        <div class="ui six wide column">
+            <h1 class="ui teal header">登录🐉</h1>
+            <div class="ui segment">
+                <div class="ui content">
+    <form class="ui large form" method="post" action="{%url 'login'%}">
+      {% csrf_token %}
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" name="username" placeholder="请输入用户名">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="password" name="password" placeholder="请输入密码">
+          </div>
+        </div>
+        {{ error }}<br>
+        <a class="pull-right field" href="{%url 'forget'%}">忘记密码</a>
+        <button class="ui fluid large teal button" type="submit">登陆</button>
+      </div>
+
+      <div class="ui error message"></div>
+    </form>
+
+
+    <div class="ui message">
+      New to us? <a href="{%url 'register'%}">注册</a>
+    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
